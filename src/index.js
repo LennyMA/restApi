@@ -7,3 +7,6 @@ console.log("Ejecutandoce en el puerto ", PORT)
 
 //aqui es donde arranca todo
 //en push.yml van los jobs, para ello se crea una carpeta .github/workflows para usar en github
+
+//en package.json -> "dev": "nodemon src/index.js", desarrollo
+//"start": "node src/index.js", producction
