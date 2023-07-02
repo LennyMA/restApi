@@ -1,14 +1,14 @@
 on:
   push:
     branches:
-      - master # Cambiar por la rama principal en tu proyecto
+      - master
 
 name: deploy
 
 jobs:
   deploy:
     name: deploy to cluster
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout repository
@@ -21,3 +21,19 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.RAILWAY_API_TOKEN }}" \
             -d '{"projectId": "cfb9cc1d-7642-45ff-8e1a-1e7edd3f16b1", "services": ["nodejs-mysql-restapi"]}' \
             https://cloud.railway.app/v1/services/deploy
+
+  get_status:
+    name: Get deployment status
+    needs: deploy
+    runs-on: windows-latest
+
+    steps:
+      - name: Get deployment status from Railway
+        run: |
+          curl -X GET \
+            -H "Authorization: Bearer ${{ secrets.RAILWAY_API_TOKEN }}" \
+            "https://cloud.railway.app/v1/services/deploy/status?projectId=cfb9cc1d-7642-45ff-8e1a-1e7edd3f16b1&services=nodejs-mysql-restapi"
+
+      - name: Show deployment status
+        run: echo "Deployment status retrieved successfully."
+
