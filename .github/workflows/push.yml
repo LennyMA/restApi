@@ -24,17 +24,18 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Install http-request action
+      - name: Install http-requests action
         run: |
-          npm install -g @actions/http-request
+          npm install -g http-requests
 
       - name: Get deployment status from Railway
         run: |
-          http-request GET https://cloud.railway.app/v1/services/deploy/status \
+          http-requests GET https://cloud.railway.app/v1/services/deploy/status \
             -H "Authorization: Bearer ${{ secrets.RAILWAY_API_TOKEN }}" \
             -d "projectId=cfb9cc1d-7642-45ff-8e1a-1e7edd3f16b1&services=nodejs-mysql-restapi"
 
       - name: Show deployment status
         run: echo "Deployment status retrieved successfully."
+
 
 
