@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main # Cambiar por la rama principal en tu proyecto
+      - master # Cambiar por la rama principal en tu proyecto
 
 name: deploy
 
