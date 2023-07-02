@@ -6,3 +6,4 @@ app.listen(PORT) //definimos en que puerto va a estar escuchando
 console.log("Ejecutandoce en el puerto ", PORT)
 
 //aqui es donde arranca todo
+//en push.yml van los jobs, para ello se crea una carpeta .github/workflows para usar en github
