@@ -16,11 +16,7 @@ jobs:
 
       - name: Deploy to Railway
         run: |
-          curl -X POST \
-            -H "Content-Type: application/json" \
-            -H "Authorization: Bearer ${{ secrets.RAILWAY_API_TOKEN }}" \
-            -d '{"projectId": "cfb9cc1d-7642-45ff-8e1a-1e7edd3f16b1", "services": ["nodejs-mysql-restapi"]}' \
-            https://cloud.railway.app/v1/services/deploy
+          # Comando de despliegue anterior usando curl
 
   get_status:
     name: Get deployment status
@@ -28,12 +24,17 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      - name: Install http-request action
+        run: |
+          npm install -g @actions/http-request
+
       - name: Get deployment status from Railway
         run: |
-          curl -X GET \
+          http-request GET https://cloud.railway.app/v1/services/deploy/status \
             -H "Authorization: Bearer ${{ secrets.RAILWAY_API_TOKEN }}" \
-            "https://cloud.railway.app/v1/services/deploy/status?projectId=cfb9cc1d-7642-45ff-8e1a-1e7edd3f16b1&services=nodejs-mysql-restapi"
+            -d "projectId=cfb9cc1d-7642-45ff-8e1a-1e7edd3f16b1&services=nodejs-mysql-restapi"
 
       - name: Show deployment status
         run: echo "Deployment status retrieved successfully."
+
 
