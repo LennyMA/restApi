@@ -21,4 +21,3 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.RAILWAY_API_TOKEN }}" \
             -d '{"projectId": "cfb9cc1d-7642-45ff-8e1a-1e7edd3f16b1", "services": ["nodejs-mysql-restapi"]}' \
             https://cloud.railway.app/v1/services/deploy
-
