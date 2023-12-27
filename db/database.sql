@@ -8,11 +8,11 @@ CREATE TABLE employee(
 );
 
 INSERT INTO employee VALUES
-(1, 'Lenin', 1000),
-(2, 'Anibal', 2000),
-(3, 'Jazmina', 3000),
-(4, 'Patricia', 4000),
-(5, 'Odalis', 5000);
+(1, 'Empleado1', 1000),
+(2, 'Empleado2', 2000),
+(3, 'Empleado3', 3000),
+(4, 'Empleado4', 4000),
+(5, 'Empleado5', 5000);
 
 SELECT * FROM employee;
 -- DELETE FROM employee WHERE id > 5;
